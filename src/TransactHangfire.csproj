@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>8.0</LangVersion>
+		<Product>TransactHangfire</Product>
+		<PackageId>TransactHangfire</PackageId>
+		<Authors>dalibor-rankovic</Authors>
+		<Copyright>Copyright © 2020 Dalibor Rankovic</Copyright>
+		<Description>TransactionScope filter wrapper for Hangfire jobs</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<NoPackageAnalysis>true</NoPackageAnalysis>
+		<PackageTags>hangfire transaction scope background jobs wrapper transactions</PackageTags>
+		<PackageReleaseNotes>Initial release</PackageReleaseNotes>
+		<PackageIconUrl />
+		<PackageIcon>icon.png</PackageIcon>
+		<RepositoryUrl>https://github.com/dalrankov/TransactHangfire</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/dalrankov/TransactHangfire</PackageProjectUrl>
+		<RepositoryType>git</RepositoryType>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+		<DocumentationFile>bin\Release\TransactHangfire.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Hangfire.Core" Version="1.7.19" />
+	</ItemGroup>
+
+</Project>
