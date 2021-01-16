@@ -7,7 +7,7 @@ TransactionScope filter wrapper for Hangfire jobs
 
 ## How it works?
 
-Registered filter will wrap jobs executed by Hangfire inside TransactionScope. Operations within a job are persisted only if there are no exceptions being thrown.
+Registered filter will wrap jobs executed by Hangfire inside TransactionScope. Operations within a job are persisted only if there are no unhandled exceptions being thrown or job is being cancelled inside another filter.
 
 ## Usage
 

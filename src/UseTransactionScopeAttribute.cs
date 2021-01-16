@@ -14,6 +14,7 @@ namespace TransactHangfire
     public sealed class UseTransactionScopeAttribute
         : JobFilterAttribute, IServerFilter
     {
+        static readonly ITransactionScopeFactory _defaultFactory = new TransactionScopeFactory();
         static readonly ConcurrentDictionary<string, TransactionScope> _transactionScopes =
             new ConcurrentDictionary<string, TransactionScope>();
 
@@ -21,7 +22,7 @@ namespace TransactHangfire
 
         public UseTransactionScopeAttribute()
         {
-            _factory = new TransactionScopeFactory();
+            _factory = _defaultFactory;
         }
 
         /// <param name="factoryType">Custom TransactionScope factory class type with parameterless constructor and implementing <see cref="ITransactionScopeFactory"/>.</param>
@@ -43,7 +44,7 @@ namespace TransactHangfire
         {
             if (_transactionScopes.TryRemove(context.BackgroundJob.Id, out TransactionScope scope))
             {
-                if (context.Exception == null)
+                if (!(context.Canceled || (context.Exception != null && !context.ExceptionHandled)))
                 {
                     scope.Complete();
                 }

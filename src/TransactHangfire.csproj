@@ -12,13 +12,16 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<NoPackageAnalysis>true</NoPackageAnalysis>
 		<PackageTags>hangfire transaction scope background jobs wrapper transactions</PackageTags>
-		<PackageReleaseNotes>Initial release</PackageReleaseNotes>
+		<PackageReleaseNotes>Added two patches/fixes
+
+- Fixed scope completion condition to avoid cancelled and unhandled exception cases
+- Changed logic to produce default TransactionScope factory only once</PackageReleaseNotes>
 		<PackageIconUrl />
 		<PackageIcon>icon.png</PackageIcon>
 		<RepositoryUrl>https://github.com/dalrankov/TransactHangfire</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/dalrankov/TransactHangfire</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
